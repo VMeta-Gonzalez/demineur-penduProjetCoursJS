@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>MineSweeper</title>
+    <meta charset="UTF-8" />
+    <script src="MineSweeper.js"></script>
+    <script>
+        /* On initialise le grille au niveau Débutant par défaut */
+        window.onload = function () {
+            MineSweeper.initialise();
+        }
+    </script>
+    <link href="MineSweeper.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="page">
+        <h1>Démineur</h1>
+        <div class="chrono" id="chrono"></div>
+
+        <div class="game" id="plateau"></div>
+        <div class="options">
+
+            <div id="result" class="result">
+
+            </div>
+
+            <div class="menus">
+                <div class="menu" onclick="MineSweeper.startGame('easy');">
+                    Jouer "Débutant"
+                </div>
+                <div class="menu" onclick="MineSweeper.startGame('normal');">
+                    Jouer "Intermédiaire"
+                </div>
+                <div class="menu" onclick="MineSweeper.startGame('hard');">
+                    Jouer "Expert"
+                </div>
+                <div class="menu" onclick="MineSweeper.startGame('extreme');">
+                    Jouer "Maître"
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
