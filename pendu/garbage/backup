@@ -1,0 +1,6 @@
+<input type="checkbox" id="ck1" checked="" disabled>
+<input type="checkbox" id="ck2" checked="" disabled>
+<input type="checkbox" id="ck3" checked="" disabled>
+<input type="checkbox" id="ck4" checked="" disabled>
+<input type="checkbox" id="ck5" checked="" disabled>
+<input type="checkbox" id="ck6" checked="" disabled>
