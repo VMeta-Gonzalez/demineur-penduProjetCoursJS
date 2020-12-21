@@ -5,6 +5,8 @@
     <script language="javascript">
         var motSecret;
 
+        var lettreTapee = new Array();
+
         var now = new Date();			// Date d'aujourd'hui
         var tableauMot = new Array();	// Le tableau qui contient les lettres du mot à trouver
         var mots = new Array();		    // Le tableau qui contient tous les mots possibles
@@ -26,138 +28,161 @@
 </head>
 
 <body>
-<h1>Jeu du pendu</h1>
+<div id="page">
+    <h1>Jeu du pendu</h1>
 
-<h2>Entrez une lettre grâce au clavier ci-dessous.</h2>
+    <h2>Entrez une lettre grâce au clavier ci-dessous.</h2>
 
-<table id="clavier">
-    <tr>
-        <td onclick="proposer(this);">A</td>
-        <td onclick="proposer(this);">B</td>
-        <td onclick="proposer(this);">C</td>
-        <td onclick="proposer(this);">D</td>
-        <td onclick="proposer(this);">E</td>
-        <td onclick="proposer(this);">F</td>
-        <td onclick="proposer(this);">G</td>
-        <td onclick="proposer(this);">H</td>
-        <td onclick="proposer(this);">I</td>
-        <td onclick="proposer(this);">J</td>
-    </tr>
-    <tr>
-        <td onclick="proposer(this);">K</td>
-        <td onclick="proposer(this);">L</td>
-        <td onclick="proposer(this);">M</td>
-        <td onclick="proposer(this);">N</td>
-        <td onclick="proposer(this);">O</td>
-        <td onclick="proposer(this);">P</td>
-        <td onclick="proposer(this);">Q</td>
-        <td onclick="proposer(this);">R</td>
-        <td onclick="proposer(this);">S</td>
-        <td onclick="proposer(this);">T</td>
-    </tr>
-    <tr>
-        <td onclick="proposer(this);">U</td>
-        <td onclick="proposer(this);">V</td>
-        <td onclick="proposer(this);">W</td>
-        <td onclick="proposer(this);">X</td>
-        <td onclick="proposer(this);">Y</td>
-        <td onclick="proposer(this);">Z</td>
-    </tr>
-</table>
-<br/><br/>
-<script language="JavaScript">
+    <table id="clavier">
+        <tr>
+            <td onclick="proposer(this);" id="a">A</td>
+            <td onclick="proposer(this);" id="b">B</td>
+            <td onclick="proposer(this);" id="c">C</td>
+            <td onclick="proposer(this);" id="d">D</td>
+            <td onclick="proposer(this);" id="e">E</td>
+            <td onclick="proposer(this);" id="f">F</td>
+            <td onclick="proposer(this);" id="g">G</td>
+            <td onclick="proposer(this);" id="h">H</td>
+            <td onclick="proposer(this);" id="i">I</td>
+            <td onclick="proposer(this);" id="j">J</td>
+            <td onclick="proposer(this);" id="k">K</td>
+            <td onclick="proposer(this);" id="l">L</td>
+            <td onclick="proposer(this);" id="m">M</td>
+        </tr>
+        <tr>
+            <td onclick="proposer(this);" id="n">N</td>
+            <td onclick="proposer(this);" id="u">U</td>
+            <td onclick="proposer(this);" id="v">V</td>
+            <td onclick="proposer(this);" id="w">W</td>
+            <td onclick="proposer(this);" id="x">X</td>
+            <td onclick="proposer(this);" id="y">Y</td>
+            <td onclick="proposer(this);" id="z">Z</td>
+            <td onclick="proposer(this);" id="o">O</td>
+            <td onclick="proposer(this);" id="p">P</td>
+            <td onclick="proposer(this);" id="q">Q</td>
+            <td onclick="proposer(this);" id="r">R</td>
+            <td onclick="proposer(this);" id="s">S</td>
+            <td onclick="proposer(this);" id="t">T</td>
+        </tr>
+    </table>
+    <br/><br/>
+    <div class="fail">
+        <script language="JavaScript">
 
-    for (var i = 1; i < erreurMax+1; i++){
-        document.write("<input type='checkbox' id='ck"+i+"' checked='' disabled></input>");
-    }
-
-</script>
-<br/><br/>
-<a class="lien" href="javascript:location.reload();">Nouvelle partie</a>
-
-<table id="mot">
-    <tr>
-        <script language="javascript">
-
-            for (var i = 0; i < tailleMot; i++) {
-                document.write("<td> <p id=\"" + i + "\">" + motSecret.charAt(i) + "</p></td>");
-            }
-
-            for (var i = 0; i < tailleMot; i++) {
-                tableauMot[i] = document.getElementById(i);
+            for (var i = 1; i < erreurMax + 1; i++) {
+                document.write("<input class='checkboxFail' type='checkbox' id='ck" + i + "' checked='' disabled></input>");
             }
 
         </script>
-    </tr>
-</table>
+    </div>
+    <br/><br/>
+    <div class="restart">
+        <a class="lien" href="javascript:location.reload();">Nouvelle partie</a>
+    </div>
+    <br/><br/>
+    <table id="mot">
+        <tr>
+            <script language="javascript">
+
+                for (var i = 0; i < tailleMot; i++) {
+                    document.write("<td> <p id=\"" + i + "\">" + motSecret.charAt(i) + "</p></td>");
+                }
+
+                for (var i = 0; i < tailleMot; i++) {
+                    tableauMot[i] = document.getElementById(i);
+                }
+
+            </script>
+        </tr>
+    </table>
 
 
-<script language="javascript">
+    <script language="javascript">
 
-    function init(){
-        for(let i = 1; i < erreurMax+1; i++){
-            document.getElementById("ck"+i).checked = false;
-        }
-        tableauMot[0].style.visibility = 'visible';
-        tableauMot[tailleMot-1].style.visibility = 'visible';
-    }
+        let firstLetter = tableauMot[0].innerHTML.toLowerCase();
+        let lastLetter = tableauMot[tailleMot - 1].innerHTML.toLowerCase();
 
-    init();
-
-    // Gère tous les traitements à faire lorsqu'on appuie sur une touche
-    function proposer(element) {
-
-        // Si la couleur de fond est lightgreen, c'est qu'on a déjà essayé - on quitte la fonction
-        if (element.style.backgroundColor == "lightGreen" || fini) return;
-
-        // On récupère la lettre du clavier et on met la touche en lightgreen (pour signaler qu'elle est cliquée)
-        var lettre = element.innerHTML;
-
-        // On met la variable trouve à false;
-        var trouve = false;
-
-        // On parcours chaque lettre du mot, on cherche si on trouve la lettre séléectionnée au clavier
-        for (var i = 0; i < tailleMot; i++) {
-
-            // Si c'est le cas :
-            if (tableauMot[i].innerHTML == lettre) {
-                tableauMot[i].style.visibility = 'visible';	// On affiche la lettre
-                trouve = true;
-                lettresTrouvees++;
+        function init() {
+            for (let i = 1; i < erreurMax + 1; i++) {
+                document.getElementById("ck" + i).checked = false;
             }
-
+            proposer(document.getElementById(firstLetter));
+            proposer(document.getElementById(lastLetter));
         }
 
-        // Si la lettre n'est pas présente, trouvé vaut toujours false :
-        if (!trouve) {
-            coupsManques++;
-            element.classList.add("incorrect");
-            element.onclick = null;
+        init();
 
-            for(let i = 1; i < coupsManques+1; i++){
-                document.getElementById("ck"+i).checked = true;
+        // Gère tous les traitements à faire lorsqu'on appuie sur une touche
+        function proposer(element) {
+
+            // Si la couleur de fond est lightgreen, c'est qu'on a déjà essayé - on quitte la fonction
+            if (element.className == "correct" || element.className == "incorrect" || fini) return;
+
+            // On récupère la lettre du clavier et on met la touche en lightgreen (pour signaler qu'elle est cliquée)
+            var lettre = element.innerHTML;
+
+            // On met la variable trouve à false;
+            var trouve = false;
+
+            // On parcours chaque lettre du mot, on cherche si on trouve la lettre séléectionnée au clavier
+            for (var i = 0; i < tailleMot; i++) {
+
+                // Si c'est le cas :
+                if (tableauMot[i].innerHTML == lettre) {
+                    tableauMot[i].style.visibility = 'visible';	// On affiche la lettre
+                    trouve = true;
+                    lettresTrouvees++;
+                }
+
             }
 
-            // Si on a raté 6 fois :
-            if (coupsManques == erreurMax) {
-                alert("Vous avez perdu !");
-                // on affiche le mot, on fini le jeu
-                for (var i = 0; i < tailleMot; i++) tableauMot[i].style.visibility = 'visible';
+            // Si la lettre n'est pas présente, trouvé vaut toujours false :
+            if (!trouve) {
+                coupsManques++;
+                element.classList.add("incorrect");
+                element.onclick = null;
+
+                for (let i = 1; i < coupsManques + 1; i++) {
+                    document.getElementById("ck" + i).checked = true;
+                }
+
+                // Si on a raté 6 fois :
+                if (coupsManques == erreurMax) {
+                    alert("Vous avez perdu !");
+                    // on affiche le mot, on fini le jeu
+                    for (var i = 0; i < tailleMot; i++){
+                        if(tableauMot[i].style.visibility != 'visible'){
+                            tableauMot[i].style.visibility = 'visible';
+                            tableauMot[i].style.backgroundColor = 'indianred';
+                        }
+                    }
+                    fini = true;
+                }
+                //document.images['pendu'].src = "images/pendu_" + coupsManques + ".jpg"; // On change l'image du pendu
+            } else {
+                element.classList.add("correct");
+                element.onclick = null;
+            }
+            if (lettresTrouvees == tailleMot) {
+                alert("Vous avez gagné !");
                 fini = true;
+
             }
-            //document.images['pendu'].src = "images/pendu_" + coupsManques + ".jpg"; // On change l'image du pendu
-        } else {
-            element.classList.add("correct");
-            element.onclick = null;
         }
 
-        if (lettresTrouvees == tailleMot) {
-            alert("Vous avez gagné !");
-            fini = true;
-        }
-    }
+        function key_up(event) {
+            var key = event.key.toLowerCase();
+            if (key == 'enter') {
+                location.reload();
+            } else {
+                proposer(document.getElementById(key));
+            }
+        };
 
-</script>
+        document.addEventListener('keyup', key_up, false);
+
+
+    </script>
 
 
 </div>

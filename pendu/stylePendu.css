@@ -1,30 +1,34 @@
 #page {
-	background-color: #fcd315;
+	background-color: #c7c7c7;
 	border:1px solid black;
 	text-align:left;
 	width:60%;
-	padding:30px;
+	padding:20px;
 	height:450px;
+	margin: auto;
 }
 
 h1 {
 	font-size:30px;
 	font-family:Arial, sans serif;
+	text-align: center;
+}
+
+h2 {
+	font-size: 16px;
+	font-family: Arial, sans-serif;
+	text-align: center;
 }
 
 img.pendu {
 	float:right;
 }
 
-h2 {
-	font-size:16px;
-	font-family:Arial, sans-serif;
-}
-
 #mot {
 	margin:30px 0 0 0;
 	clear:both;
 	top:100px;
+	margin: auto;
 }
 
 #mot td {
@@ -36,16 +40,19 @@ h2 {
 	font-weight:bold;
 	font-size:1.5em;
 	text-align:center;
+	margin: auto;
 }
 
- #mot p{
+#mot p{
 	visibility:hidden;
+	margin: auto;
 }
 
 #clavier{
 	border:4px outset black;
 	padding:10px;
 	background-color:#2b80d5;
+	margin: auto;
 }
 
 #clavier td {
@@ -56,6 +63,7 @@ h2 {
 	text-align:center;
 	font-weight:bold;
 	cursor:pointer;
+	margin: auto;
 }
 
 .correct {
@@ -64,6 +72,21 @@ h2 {
 
 .incorrect {
 	background-color: indianred !important;
+}
+
+.fail {
+	margin: auto;
+	text-align: center;
+}
+
+.checkboxFail{
+	width: 20px;
+	height: 20px;
+}
+
+.restart{
+	text-align: center;
+	margin: auto;
 }
 
 a.lien{
