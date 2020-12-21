@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>MineSweeper</title>
+    <meta charset="UTF-8"/>
+    <script src="chronometer.js"></script>
+    <script src="MineSweeper.js"></script>
+    <link href="MineSweeper.css" type="text/css" rel="stylesheet"/>
+</head>
+
+<body>
+<div class="page">
+    <h1>Démineur</h1>
+    <div id="chronometre">
+        <span class="chrono"></span>
+        <span class="chrono"></span>
+        <span class="chrono"></span>
+        <span class="chrono"></span>
+    </div>
+
+    <div class="game" id="plateau"></div>
+    <div class="options">
+
+        <div class="menus">
+            <div id="result" class="result"></div>
+            <div class="menu" onclick="MineSweeper.startGame('easy');">
+                Jouer "Débutant"
+            </div>
+            <div class="menu" onclick="MineSweeper.startGame('normal');">
+                Jouer "Intermédiaire"
+            </div>
+            <div class="menu" onclick="MineSweeper.startGame('hard');">
+                Jouer "Expert"
+            </div>
+            <div class="menu" onclick="MineSweeper.startGame('extreme');">
+                Jouer "Maître"
+            </div>
+        </div>
+    </div>
+    <div class="leaderboard" id="leaderboard">
+        <div class="score" id="scoreEasy"></div>
+        <div class="score" id="scoreNormal"></div>
+        <div class="score" id="scoreHard"></div>
+        <div class="score" id="scoreExtreme"></div>
+    </div>
+</div>
+</body>
+
+</html>
